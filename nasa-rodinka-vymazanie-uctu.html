@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src https://eqgipdmgquaiipsprjix.supabase.co; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src https://pmrexbworebprrarhuxn.supabase.co; base-uri 'none'; form-action 'none'">
 <title>Vymazanie účtu | Naša rodinka</title>
 <link rel="stylesheet" href="./style.css">
 <script type="module" src="./delete.mjs"></script>
@@ -16,11 +16,10 @@
     <p class="brand">Naša rodinka</p>
     <h1>Vymazanie účtu</h1>
     <p>Požiadaj o vymazanie účtu a jeho osobných údajov bez prihlásenia do aplikácie.</p>
-    <p class="notice"><strong>Testovacia verzia.</strong> Použi iba účet a kód z aplikácie Naša rodinka TEST.</p>
   </header>
   <section aria-labelledby="scope">
     <h2 id="scope">Čo sa vymaže</h2>
-    <p>Vymažeme prihlásenie, profil, osobné cloudové záznamy, profilové fotky, body viazané na profil a registrácie upozornení. Spoločné záznamy ostanú rodine. Ak je rodič jediným členom rodiny, vymaže sa aj jej obsah. Ak zostávajú ďalší členovia, posledný rodič musí najprv pripojiť ďalšieho rodiča.</p>
+    <p>Vymažeme prihlásenie, profil, osobné cloudové záznamy, profilové fotky, body viazané na profil a registrácie upozornení. Spoločné záznamy ostanú rodine. Ak zostávajú ďalší členovia, posledný rodič musí najprv pripojiť ďalšieho rodiča.</p>
     <p>Platnú žiadosť spracujeme hneď. Ak výmaz fotiek zostane rozpracovaný, dostaneš kód na jeho dokončenie. Údaje uložené iba v telefóne môžeš odstrániť na danom zariadení.</p>
   </section>
   <section aria-labelledby="with-code">
@@ -29,8 +28,9 @@
     <form id="delete">
       <label for="code">Kód obnovy</label>
       <input id="code" type="password" required maxlength="128" autocomplete="off" spellcheck="false">
+      <p class="notice" id="delete-consequences"><strong>Ak si posledným členom, natrvalo sa vymaže celá rodina vrátane jej údajov.</strong> Zadaním VYMAZAŤ a odoslaním potvrdzuješ výmaz v tomto rozsahu.</p>
       <label for="confirm">Na potvrdenie napíš VYMAZAŤ</label>
-      <input id="confirm" type="text" required maxlength="7" autocomplete="off" spellcheck="false">
+      <input id="confirm" type="text" required maxlength="7" autocomplete="off" spellcheck="false" aria-describedby="delete-consequences">
       <button disabled>Trvalo vymazať účet</button>
       <p id="delete-status" class="status" role="status"></p>
     </form>
@@ -39,13 +39,15 @@
   <section aria-labelledby="without-code">
     <h2 id="without-code">Nemám kód obnovy</h2>
     <p>Ak máš zariadenie, na ktorom je účet stále prihlásený, otvor nastavenia účtu a vymaž ho priamo v aplikácii. Na podporovaných profiloch môžeš v nastaveniach vytvoriť aj nový kód obnovy.</p>
-    <p class="notice"><strong>Stratil si zariadenie aj kód?</strong> Prevádzkovateľ musí pred výmazom overiť vlastníctvo účtu. Overený kontakt na vybavenie takejto žiadosti ešte čaká na doplnenie. Meno profilu ani kód pozvánky samy osebe vlastníctvo nepreukazujú.</p>
+    <p class="notice"><strong>Stratil si zariadenie aj kód?</strong> Napíš na <a href="mailto:infoznetu@gmail.com">infoznetu@gmail.com</a>. Neposielaj heslá, kódy obnovy ani pozvánky. Pred výmazom musí prevádzkovateľ overiť tvoje oprávnenie nezávislým dôkazom. Samotná kontrola nad e-mailovou adresou, meno profilu ani pozvánka nestačia.</p>
   </section>
   <details>
     <summary>Dokončiť rozpracovaný výmaz fotiek</summary>
     <form id="cleanup">
       <label for="receipt">Kód na dokončenie výmazu</label>
       <input id="receipt" type="password" required maxlength="36" autocomplete="off" spellcheck="false">
+      <label for="cleanup-code">Pôvodný kód obnovy</label>
+      <input id="cleanup-code" type="password" required maxlength="128" autocomplete="off" spellcheck="false">
       <button disabled>Dokončiť výmaz fotiek</button>
       <p id="cleanup-status" class="status" role="status"></p>
     </form>
